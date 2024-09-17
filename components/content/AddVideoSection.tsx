@@ -8,6 +8,7 @@ import ProgressBar from "@ui/ProgressBar";
 import Alert from "@ui/Alert";
 import TextInput from "@ui/TextInput";
 import { VIDEO_PLATFORMS } from "constants/panel";
+import { v4 as uuidv4 } from "uuid";
 
 const AddVideoSection = () => {
   const [settings, setSettings] = useState({
@@ -25,6 +26,7 @@ const AddVideoSection = () => {
   const [videoPlatform, setVideoPlatform] = useState("recorded");
   const [title, setTitle] = useState("");
   const [videoSrc, setVideoSrc] = useState("");
+  const [originalImage, setOriginalImage] = useState("");
   const [duration, setDuration] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -40,6 +42,7 @@ const AddVideoSection = () => {
   const addVideo = async () => {
     setIsSubmitting(true);
     setAlertMessage("");
+    const uniqueId = uuidv4();
     try {
       const response = await fetch("/api/videos", {
         method: "POST",
@@ -47,9 +50,9 @@ const AddVideoSection = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          originalImage: "http://example.com/image.jpg",
+          originalImage: originalImage.trim(),
           plattform: videoPlatform,
-          originalId: "abcd1234",
+          originalId: uniqueId,
           title: title.trim(),
           videoSrc: videoSrc.trim(),
         }),
@@ -71,6 +74,7 @@ const AddVideoSection = () => {
       setAlertMessage("Video added successfully!");
       setTitle("");
       setVideoSrc("");
+      setOriginalImage("");
     } catch (error: any) {
       setAlertMessage(`Failed to add video: ${error.message}`);
     } finally {
@@ -110,6 +114,12 @@ const AddVideoSection = () => {
         handleChange={(e) => setVideoSrc(e.target.value)}
         value={videoSrc}
         placeholder="Video URL"
+      />
+      <TextInput
+        label="Original Image URL"
+        handleChange={(e) => setOriginalImage(e.target.value)}
+        value={originalImage}
+        placeholder="Image URL"
       />
       {!isRunning && (
         <Button

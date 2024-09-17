@@ -5,6 +5,7 @@ import LabelCheckbox from "@ui/Checkbox";
 import DropDown from "@ui/Dropdown";
 import Headline from "@ui/Headline";
 import ProgressBar from "@ui/ProgressBar";
+import TextInput from "@ui/TextInput";
 import { ADD_TAG_STEPSIZE, TAG_ROLES_DROPDOWN } from "constants/panel";
 import useTagAPI from "hooks/useTagAPI";
 import React, { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ type Props = {};
 
 const AddTagsSection = (props: Props) => {
   const [tags, setTags] = useState("");
-  const [role, setRole] = useState("tag");
+  const [role, setRole] = useState("cities");
   const [amount, setAmount] = useState(0);
   const [settings, setSettings] = useState({
     parseRelated: false,
@@ -54,11 +55,11 @@ const AddTagsSection = (props: Props) => {
 
   const roleMap: Record<string, any> = {
     tag: "Tags",
-    model: "Models",
+    model: "Cities",
     category: "Categories",
   };
 
-  const unitName = roleMap[role] ?? "Tags";
+  const unitName = roleMap[role] ?? "Cities";
 
   const { completed, target, isRunning, isDone } = settings;
 
@@ -109,28 +110,17 @@ const AddTagsSection = (props: Props) => {
         }}
       />
       <div className="relative mt-3">
-        <textarea
-          style={{ resize: "none" }}
-          className="w-full bg-slate-800 focus:outline-none rounded-md p-4"
-          rows={15}
-          cols={10}
+        <TextInput
           value={tags}
-          placeholder={`Enter ${unitName}...`}
-          onChange={(e) => {
+          label="Enter city name"
+          handleChange={(e) => {
             setTags(e.target.value);
           }}
         />
-        <div className="absolute top-1 right-3 text-indigo-500">
+        {/* <div className="absolute top-1 right-3 text-indigo-500">
           {amount} {unitName}
-        </div>
+        </div> */}
       </div>
-      <LabelCheckbox
-        label="Parse Related Tags"
-        value={settings.parseRelated}
-        handleChange={() => {
-          updateSettings({ parseRelated: !settings.parseRelated });
-        }}
-      />
       {role !== "tag" && (
         <LabelCheckbox
           label="Parse Default Image"
@@ -147,6 +137,7 @@ const AddTagsSection = (props: Props) => {
             if (tags.length === 0) return;
             addTags();
           }}
+          disabled={tags.length === 0}
         />
       )}
       {isRunning && (

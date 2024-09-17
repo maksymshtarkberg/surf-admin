@@ -1,23 +1,18 @@
-import { PlusIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
-import React from 'react';
+import { PlusIcon } from "@heroicons/react/outline";
+import Link from "next/link";
+import React from "react";
 
 type Props = {};
 
 const navigation = [
   {
-    href: '/tags/add',
-    label: 'Add Tags',
+    href: "/cities/add",
+    label: "Add Cities",
     icon: <PlusIcon className="w-5 h-5 mr-1" />,
   },
   {
-    href: '/videos/add',
-    label: 'Add Videos',
-    icon: <PlusIcon className="w-5 h-5 mr-1" />,
-  },
-  {
-    href: '/keywords/add',
-    label: 'Add Keywords',
+    href: "/videos/add",
+    label: "Add Videos",
     icon: <PlusIcon className="w-5 h-5 mr-1" />,
   },
 ];

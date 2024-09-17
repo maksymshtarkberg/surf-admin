@@ -1,34 +1,30 @@
-import { LogoutIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
-import NavButton from './NavButton';
-import { useRouter } from 'next/router';
-import React, { FC, useState } from 'react';
-import { classNames } from 'utils/helpers';
-import PanelNavItem from './PanelNavItem';
-import { signOut } from 'next-auth/react';
-import { useSession } from 'next-auth/react';
+import { LogoutIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import NavButton from "./NavButton";
+import { useRouter } from "next/router";
+import React, { FC, useState } from "react";
+import { classNames } from "utils/helpers";
+import PanelNavItem from "./PanelNavItem";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 type PanelNavbarProps = {};
 
 const navigation = [
   {
-    name: 'Statistics',
-    href: '/',
+    name: "Statistics",
+    href: "/",
   },
   {
-    name: 'Videos',
-    href: '/videos',
+    name: "Videos",
+    href: "/videos",
   },
   {
-    name: 'Tags',
-    href: '/tags',
+    name: "Cities",
+    href: "/cities",
   },
   {
-    name: 'Keywords',
-    href: '/keywords',
-  },
-  {
-    name: 'Feedbacks',
-    href: '/feedbacks',
+    name: "Feedbacks",
+    href: "/feedbacks",
   },
 ];
 
@@ -38,16 +34,16 @@ const handleLogout = () => {
 
 const PanelNavbar: FC<PanelNavbarProps> = () => {
   const { data: session, status } = useSession();
-  const loading = status === 'loading';
+  const loading = status === "loading";
   const [showMobileNav, setShowMobileNav] = useState(false);
-  const fullClass = showMobileNav ? 'w-full' : '';
+  const fullClass = showMobileNav ? "w-full" : "";
   const { pathname } = useRouter();
 
   if (loading) {
     return <div className="p-5 bg-slate-900"></div>;
   }
 
-  if (status === 'unauthenticated') {
+  if (status === "unauthenticated") {
     return (
       <div className="p-5 bg-slate-900">
         <div className="text-center text-gray-100 font-bold text-3xl">
@@ -59,8 +55,8 @@ const PanelNavbar: FC<PanelNavbarProps> = () => {
   return (
     <header
       className={classNames(
-        showMobileNav ? 'w-full' : '',
-        'border-b bg-slate-900 border-b-slate-300/10'
+        showMobileNav ? "w-full" : "",
+        "border-b bg-slate-900 border-b-slate-300/10"
       )}
     >
       <nav className="flex flex-row justify-between items-center bg-slate-900 max-w-5xl mx-auto px-2 lg:px-0 py-2 md:py-0">
@@ -113,8 +109,8 @@ const PanelNavbar: FC<PanelNavbarProps> = () => {
 
       <div
         className={classNames(
-          showMobileNav ? '' : 'hidden',
-          'flex overflow-auto w-full'
+          showMobileNav ? "" : "hidden",
+          "flex overflow-auto w-full"
         )}
       >
         <div

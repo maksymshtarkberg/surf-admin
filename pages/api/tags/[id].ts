@@ -59,16 +59,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     if (req.method === "DELETE") {
       const tag = (await getTag(id)) as Tag;
-      if (tag.originalImage) {
-        const role = tag.role as "tag";
-        console.log("Deleting image with path:", tag.originalImage);
-        deleteImage(
-          tag.originalImage,
-          tag.name,
-          IMAGE_SETTINGS[role].subPath,
-          IMAGE_SETTINGS[role].prefix
-        );
-      }
+      // if (tag.originalImage) {
+      //   const role = tag.role as "tag";
+      //   console.log("Deleting image with path:", tag.originalImage);
+      //   deleteImage(
+      //     tag.originalImage,
+      //     tag.name,
+      //     IMAGE_SETTINGS[role].subPath,
+      //     IMAGE_SETTINGS[role].prefix
+      //   );
+      // }
       await removeTagById(id);
       return res.status(200).send({ message: "Tag deleted" });
     }

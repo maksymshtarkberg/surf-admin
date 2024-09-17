@@ -38,14 +38,14 @@ export const VIDEO_PLATFORMS = [
 ];
 
 export const TAG_ROLES_DROPDOWN = [
-  {
-    label: "Tag",
-    query: "tag",
-  },
-  {
-    label: "Category",
-    query: "category",
-  },
+  // {
+  //   label: "Tag",
+  //   query: "tag",
+  // },
+  // {
+  //   label: "Category",
+  //   query: "category",
+  // },
   {
     label: "Cities",
     query: "cities",

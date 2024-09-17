@@ -12,7 +12,6 @@ type Props = {
 };
 
 const VideoTableRow: FC<Props> = ({ video, deleteHandler, editHandler }) => {
-  console.log(video.id);
   return (
     <tr className="bg-slate-800 hover:bg-slate-700/80 text-gray-400 hover:text-gray-300 text-sm">
       <td className="px-4 py-3 font-semibold">

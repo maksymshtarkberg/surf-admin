@@ -31,38 +31,38 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         video.title !== req.body.title ||
         video.originalImage !== req.body.originalImage
       ) {
-        deleteImage(
-          video.originalImage,
-          video.title,
-          IMAGE_SETTINGS.thumbnail.subPath,
-          IMAGE_SETTINGS.thumbnail.prefix
-        );
-        deleteImage(
-          video.originalImage,
-          video.title,
-          IMAGE_SETTINGS.poster.subPath,
-          IMAGE_SETTINGS.poster.prefix
-        );
-        const thumbnail = await createImage(
-          req.body.originalImage,
-          req.body.title,
-          IMAGE_SETTINGS.thumbnail.height,
-          IMAGE_SETTINGS.thumbnail.width,
-          IMAGE_SETTINGS.thumbnail.subPath,
-          IMAGE_SETTINGS.thumbnail.prefix
-        );
-        const poster = await createImage(
-          req.body.originalImage,
-          req.body.title,
-          IMAGE_SETTINGS.poster.height,
-          IMAGE_SETTINGS.poster.width,
-          IMAGE_SETTINGS.poster.subPath,
-          IMAGE_SETTINGS.poster.prefix
-        );
+        // deleteImage(
+        //   video.originalImage,
+        //   video.title,
+        //   IMAGE_SETTINGS.thumbnail.subPath,
+        //   IMAGE_SETTINGS.thumbnail.prefix
+        // );
+        // deleteImage(
+        //   video.originalImage,
+        //   video.title,
+        //   IMAGE_SETTINGS.poster.subPath,
+        //   IMAGE_SETTINGS.poster.prefix
+        // );
+        // const thumbnail = await createImage(
+        //   req.body.originalImage,
+        //   req.body.title,
+        //   IMAGE_SETTINGS.thumbnail.height,
+        //   IMAGE_SETTINGS.thumbnail.width,
+        //   IMAGE_SETTINGS.thumbnail.subPath,
+        //   IMAGE_SETTINGS.thumbnail.prefix
+        // );
+        // const poster = await createImage(
+        //   req.body.originalImage,
+        //   req.body.title,
+        //   IMAGE_SETTINGS.poster.height,
+        //   IMAGE_SETTINGS.poster.width,
+        //   IMAGE_SETTINGS.poster.subPath,
+        //   IMAGE_SETTINGS.poster.prefix
+        // );
         updatedVideo = await updateVideo(+id, {
           ...req.body,
-          thumbnail: thumbnail,
-          poster: poster,
+          // thumbnail: thumbnail,
+          // poster: poster,
         });
       } else {
         updatedVideo = await updateVideo(+id, req.body);

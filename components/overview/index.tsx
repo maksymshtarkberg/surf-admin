@@ -16,7 +16,7 @@ const OverviewSection: FC<Props> = ({ counts }) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5 md:mb-10">
       <OverviewItem title="Videos" href="/videos" count={counts.videosCount} />
-      <OverviewItem
+      {/* <OverviewItem
         title="Tags"
         count={counts.tagsCount}
         href="/tags?role=tag"
@@ -25,17 +25,17 @@ const OverviewSection: FC<Props> = ({ counts }) => {
         title="Categories"
         count={counts.categoriesCount}
         href="/tags?role=category"
-      />
+      /> */}
       <OverviewItem
         title="Cities"
         count={counts.modelsCount}
-        href="/tags?role=cities"
+        href="/cities?role=cities"
       />
-      <OverviewItem
+      {/* <OverviewItem
         title="Keywords"
         count={counts.keywordsCount}
         href="/keywords"
-      />
+      /> */}
       <OverviewItem
         title="Feedbacks"
         count={counts.feedbacksCount}

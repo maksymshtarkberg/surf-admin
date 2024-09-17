@@ -60,7 +60,7 @@ const EditVideoModal: FC<Props> = ({ isShowing, onClose, id, saveChanges }) => {
                 }}
               />
 
-              <TagEditor
+              {/* <TagEditor
                 label="Tags"
                 tags={video.tags}
                 removeTag={(tagToRemove) => {
@@ -97,7 +97,7 @@ const EditVideoModal: FC<Props> = ({ isShowing, onClose, id, saveChanges }) => {
                     updateVideo("categories", currentCategories);
                   }
                 }}
-              />
+              /> */}
 
               <TagEditor
                 label="City"
@@ -162,13 +162,13 @@ const EditVideoModal: FC<Props> = ({ isShowing, onClose, id, saveChanges }) => {
               <div className="text-sm text-gray-100 mt-3">
                 Views: <span className="font-semibold">{video.views}</span>
               </div>
-              <div className="text-sm text-gray-100 mt-3">
+              {/* <div className="text-sm text-gray-100 mt-3">
                 Likes: <span className="font-semibold">{video.likes}</span>
               </div>
               <div className="text-sm text-gray-100 mt-3">
                 Dislikes:{" "}
                 <span className="font-semibold">{video.dislikes}</span>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:space-y-0 w-full space-y-2 md:space-x-2 mt-8">
