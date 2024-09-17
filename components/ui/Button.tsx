@@ -5,7 +5,7 @@ type Props = {
   title: string;
   handleClick: () => void;
   btnType?: "primary" | "secondary";
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 const Button: FC<Props> = ({

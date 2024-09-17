@@ -1,32 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Alert from '@ui/Alert';
-import Button from '@ui/Button';
-import DropDown from '@ui/Dropdown';
-import Headline from '@ui/Headline';
-import ProgressBar from '@ui/ProgressBar';
-import { ADD_KEYWORD_STEPSIZE } from 'constants/panel';
-import useKeywordAPI from 'hooks/useKeywordAPI';
-import React, { useEffect, useState } from 'react';
-import { KeywordRole } from 'types/types';
-import { textAreaToArray } from 'utils/helpers';
+import Alert from "@ui/Alert";
+import Button from "@ui/Button";
+import DropDown from "@ui/Dropdown";
+import Headline from "@ui/Headline";
+import ProgressBar from "@ui/ProgressBar";
+import { ADD_KEYWORD_STEPSIZE } from "constants/panel";
+import useKeywordAPI from "hooks/useKeywordAPI";
+import React, { useEffect, useState } from "react";
+import { KeywordRole } from "types/types";
+import { textAreaToArray } from "utils/helpers";
 
 type Props = {};
 
 const KEYWORDS_ROLE_DROPDOWN = [
   {
-    label: 'Keywords',
-    query: 'keyword',
+    label: "Keywords",
+    query: "keyword",
   },
   {
-    label: 'Titles',
-    query: 'title',
+    label: "Titles",
+    query: "title",
   },
 ];
 
 const AddKeywordsSection = (props: Props) => {
   const [amount, setAmount] = useState(0);
-  const [keywords, setKeywords] = useState('');
-  const [role, setRole] = useState('keyword');
+  const [keywords, setKeywords] = useState("");
+  const [role, setRole] = useState("keyword");
   const [settings, setSettings] = useState({
     target: 0,
     completed: 0,
@@ -49,7 +49,7 @@ const AddKeywordsSection = (props: Props) => {
     });
   };
 
-  const unitName = role === 'keyword' ? 'Keywords' : 'Titles';
+  const unitName = role === "keyword" ? "Keywords" : "Titles";
 
   const addKeywords = () => {
     const keywordsArray = textAreaToArray(keywords);
@@ -90,7 +90,7 @@ const AddKeywordsSection = (props: Props) => {
           isRunning: false,
           isDone: true,
         });
-        setKeywords('');
+        setKeywords("");
       }
     };
     addTag();
@@ -112,7 +112,7 @@ const AddKeywordsSection = (props: Props) => {
       />
       <div className="relative mt-3">
         <textarea
-          style={{ resize: 'none' }}
+          style={{ resize: "none" }}
           className="w-full bg-slate-800 focus:outline-none rounded-md p-4"
           rows={15}
           cols={10}
